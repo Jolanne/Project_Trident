@@ -7,7 +7,8 @@ using UnityEngine.UI;
 
 public class SceneMGR : MonoBehaviour
 {
-
+    public bool splash;
+    public GameObject SplashScreen;
     public GameObject pauseMenuPanel;
     public GameObject mainMenuPanel;
 
@@ -18,8 +19,18 @@ public class SceneMGR : MonoBehaviour
             pauseMenuPanel.SetActive(true);
             mainMenuPanel.SetActive(false);
         }
+        if (Input.GetKeyDown(KeyCode.Space) && splash == false)
+        {
+            SplashScreen.SetActive(false);
+            mainMenuPanel.SetActive(true);
+            splash = true;
+        }
     }
-
+    public void resume ()
+    {
+        pauseMenuPanel.SetActive(false);
+        mainMenuPanel.SetActive(true);
+    }
     public void QuitGame()
     {
         Application.Quit();
